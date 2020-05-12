@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+button{
+  margin: 10px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +39,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.startBtn {
+  font-size: 25px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.small {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.main {
+  height: 90%;
+  width: 100%;
+  vertical-align: middle;
+  min-height: 200px;
+  margin-top: 150px;
+  margin-bottom: 150px;
 }
