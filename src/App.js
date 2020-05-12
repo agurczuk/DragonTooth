@@ -17,6 +17,8 @@ const App = (props) => {
   const [lastCol, setLastCol] = useState(false);
   const [firstCol, setFirstCol] = useState(false);
 
+  const [imgEvery, setImgEvery] = useState(3);
+
   const startSylaby = () =>{
     const x = sylaby.trim().split(',');
     setSylabyParsed(x);
@@ -30,6 +32,7 @@ const App = (props) => {
       Czcionka: <Text onChange={val => setFontSize(val)} value={fontSize} /><br/>
       <Btn text='Pierwsz kolorowa' onClick={() => setFirstCol(!firstCol)} /> {firstCol? 'TAK' : 'NIE'}<br/>
       <Btn text='Ostatnia kolorowa' onClick={() => setLastCol(!lastCol)} /> {lastCol? 'TAK' : 'NIE'}<br/>
+      <Btn text='Obrazek co' onClick={() => setImgEvery(imgEvery > 10 ? 3 : imgEvery + 3)} /> {imgEvery}<br />
       <TextArea onChange={val => setSylaby(val)} value={sylaby} />
       <br/>
       <Btn text='Start' onClick={() => startSylaby()} class='startBtn' />
@@ -43,8 +46,11 @@ const App = (props) => {
           fontSize={fontSize}
           firstCol={firstCol}
           lastCol={lastCol}
+          imgEvery={imgEvery}
         />
       </div>}
+
+      
     </div>
   );
 }

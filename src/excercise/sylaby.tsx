@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Btn from '../Btn';
+import RandomGif from '../components/randomGif';
 
 type Props = {
     sylaby: Array<string>,
@@ -8,6 +9,7 @@ type Props = {
     fontSize: string,
     firstCol: boolean,
     lastCol: boolean,
+    imgEvery: number,
 };
 
 enum Rezultat {
@@ -26,6 +28,8 @@ const Sylaby = (props: Props) => {
     const [zad, setZad] = useState<Zadanie>();
 
     const [ss, setSS] = useState<boolean>(false);
+
+    const [no, setNo] = useState<number>(0);
 
     useEffect(() =>{
         const z: Array<Zadanie> = [];
@@ -47,6 +51,7 @@ const Sylaby = (props: Props) => {
         if(z){
             z.wynik = Rezultat.OK;
             setZadania(zz);
+            setNo(no + 1);
         }
     };
 
@@ -89,7 +94,7 @@ const Sylaby = (props: Props) => {
 
     return <div>
         <div className='small'>Wybrane: {props.sylaby.join(',')}</div>
-        {zad && <div><div className='main' style={{fontSize: `${props.fontSize}px`}}>
+        {zad && no !== props.imgEvery && <div><div className='main' style={{fontSize: `${props.fontSize}px`}}>
             {getSylaba()}
             </div>
         <br/><br/>
@@ -125,6 +130,10 @@ const Sylaby = (props: Props) => {
         OK: {Poprawnie()}
         <Btn text='Powrót' onClick={props.onEnd} />
         </div>}
+        {no === props.imgEvery && <React.Fragment>
+            <RandomGif /><br/>
+            <Btn text='OK' onClick={() => setNo(0)} />
+            </React.Fragment>}
     </div>
 };
 

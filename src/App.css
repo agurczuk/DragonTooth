@@ -60,3 +60,10 @@ button{
   margin-top: 150px;
   margin-bottom: 150px;
 }
+
+.centerImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
