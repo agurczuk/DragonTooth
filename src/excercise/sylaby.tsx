@@ -22,15 +22,12 @@ type Zadanie = {
 }
 
 const Sylaby = (props: Props) => {
-    const [all, setAll] = useState<Array<string>>([]);
-    
     const [zadania, setZadania] = useState<Array<Zadanie>>();
     const [zad, setZad] = useState<Zadanie>();
 
     const [ss, setSS] = useState<boolean>(false);
 
     useEffect(() =>{
-        setAll(props.sylaby);
         const z: Array<Zadanie> = [];
         props.sylaby.forEach(s => {
             z.push({sylaba: s, wynik: Rezultat.NONE })
